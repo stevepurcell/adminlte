@@ -20,3 +20,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//Route::get('admin_area', ['middleware' => 'admin', function () {
+//
+// }]);
+
+Route::group(['middleware' => 'is_admin'], function () {
+        //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
+        //    ->name('home');
+    });
